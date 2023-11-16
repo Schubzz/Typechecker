@@ -8,23 +8,33 @@
 </head>
 <body>
 
-<h2 class="text-5xl text-green-300">TypeChecker</h2>
+<h2 class="text-5xl text-[#3C70A4]">TypeChecker</h2>
 
-<div class="container">
+        <div class="flex flex-col items-center justify-center w-auto h-auto sm:px-[5%] md:px-[12%] lg:px-[20%] border-solid border-2 rounded-lg border-[#191718]">
 
-    <div class="check-text">
-    </div>
+            <div class="flex justify-center">
 
-    <div class="counter">
-    </div>
+                <div id="counter"
+                     class="bg-[#191718] lg:text-2xl md:text-xl sm:text-lg text-base text-center p-2 m-2 rounded-lg">
+                </div>
 
-    <textarea name="text-input"
-              id="text-input"
-              cols="20"
-              rows="5">
-    </textarea>
-</div>
+            </div>
 
+                <textarea
+                        cols="60"
+                        id="check-text"
+                        class="bg-[#191718] text-[#F5F5F5] p-2 rounded-lg outline-none lg:text-2xl md:text-xl sm:text-lg text-base text-opacity-20"
+                >
+                    </textarea>
 
+                <textarea
+                        cols="60"
+                        id="text-input"
+                        class="bg-[#191718] text-[#F5F5F5] p-2 rounded-lg outline-none lg:text-2xl md:text-xl sm:text-lg text-base"
+                        name="text-input"
+                >
+                    </textarea>
+
+        </div>
 </body>
 </html>

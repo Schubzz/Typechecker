@@ -15,22 +15,9 @@ body {
     justify-content: center;
     width: 100%;
     height: 100vh;
-    background-color: #03061c;
+    background-color: #1F1F1F;
     color: aliceblue;
     font-size: 2rem;
-}
-
-.container {
-    width: 85vw;
-    height: auto;
-    padding: 2rem;
-    border: solid 2px #717cde;
-    border-radius: .5rem;
-
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: space-around;
 }
 
 textarea {
@@ -45,11 +32,10 @@ h2 {
 }
 
 .counter {
-    font-size: 1.5rem;
     text-align: center;
     margin: 2rem auto;
-    background-color: #03061c;
-    border: solid 2px #717cde;
+    background-color: #28282A;
+    border: solid 2px #191718;
     border-radius: .5rem;
 
     height: 5rem;
