@@ -4,37 +4,193 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script type="module" src="/src/main.js" defer></script>
-    <title>Typechecker</title>
+    <link rel="stylesheet" href="./src/style.css">
+    <title>Layout - Workbench</title>
 </head>
-<body>
+<body class="bg-[var(--clr-body-bg)]">
 
-<h2 class="text-5xl text-[#3C70A4]">TypeChecker</h2>
+<div id="backdrop"
+     class="fixed top-0 left-0 w-full h-full z-10 opacity-0 invisible bg-[--clr-bg-transparent] trans-visible"
+>
+</div>
 
-        <div class="flex flex-col items-center justify-center w-auto h-auto sm:px-[5%] md:px-[12%] lg:px-[20%] border-solid border-2 rounded-lg border-[#191718]">
+<main class="flex items-start h-full w-full">
 
-            <div class="flex justify-center">
+    <aside id="sidebar"
+           class="grow-[1] basis-[200px] trans w-[250px] fixed left-[-250px] z-20 flex flex-col top-0  bg-[--clr-body-bg] border border-solid border-r border-[var(--clr-border)] lg:sticky h-[100dvh]">
+        <div id="info-head"
+             class="flex items-center justify-between h-[80px] p-5 border-b border-solid border-[var(--clr-border)]">
+            <img src="./src/img/profile-img.jpeg"
+                 alt="profile-img"
+                 class="w-[50px] h-[50px] border border-solid rounded-full border-[var(--clr-accent)]"
+            >
+            <button id="close-btn"
+                    class="close-btn flex flex-col p-[.125rem] cursor-pointer lg:hidden">
+                <span class="w-[35px] h-[3px] transition bg-[var(--clr-text-light)] rotate-45"></span>
+                <span class="w-[35px] h-[3px] transition bg-[var(--clr-text-light)] -rotate-45 translate-y-[-3px]"></span>
+            </button>
+        </div>
 
-                <div id="counter"
-                     class="bg-[#191718] lg:text-2xl md:text-xl sm:text-lg text-base text-center p-2 m-2 rounded-lg">
+        <ul id="navigation">
+            <li class="text-[1.25rem] font-medium transition hover:bg-[var(--clr-body-bg-hover)]">
+                <a href="#" class="flex items-center justify-start h-full w-full gap-2 p-4">
+                    <div class="w-[20px] h-[20px] border custom-border-radius bg-[var(--clr-accent)]">
+
+                    </div>
+                    <p>
+                        Nav Link 1
+                    </p>
+                </a>
+            </li>
+            <li class="text-[1.25rem] font-medium transition hover:bg-[var(--clr-body-bg-hover)]">
+                <a href="#" class="flex items-center justify-start h-full w-full gap-2 p-4">
+                    <div class="w-[20px] h-[20px] border custom-border-radius bg-[var(--clr-accent)]">
+
+                    </div>
+                    <p>
+                        Nav Link 1
+                    </p>
+                </a>
+            </li>
+            <li class="text-[1.25rem] font-medium transition hover:bg-[var(--clr-body-bg-hover)]">
+                <a href="#" class="flex items-center justify-start h-full w-full gap-2 p-4">
+                    <div class="w-[20px] h-[20px] border custom-border-radius bg-[var(--clr-accent)]">
+
+                    </div>
+                    <p>
+                        Nav Link 1
+                    </p>
+                </a>
+            </li>
+            <li class="text-[1.25rem] font-medium transition hover:bg-[var(--clr-body-bg-hover)]">
+                <a href="#" class="flex items-center justify-start h-full w-full gap-2 p-4">
+                    <div class="w-[20px] h-[20px] border custom-border-radius bg-[var(--clr-accent)]">
+
+                    </div>
+                    <p>
+                        Nav Link 1
+                    </p>
+                </a>
+            </li>
+        </ul>
+
+        <ul id="bottom-nav" class="mt-auto">
+            <li class="text-[1.25rem] font-medium transition hover:bg-[var(--clr-body-bg-hover)]">
+                <a href="#" class="flex items-center justify-start h-full w-full gap-2 p-4">
+                    <div class="w-[20px] h-[20px] border custom-border-radius bg-[var(--clr-accent)]">
+
+                    </div>
+                    <p>
+                        Settings
+                    </p>
+                </a>
+            </li>
+            <li class="text-[1.25rem] font-medium transition hover:bg-red-900">
+                <a href="#" class="flex items-center justify-start h-full w-full gap-2 p-4">
+                    <div class="w-[20px] h-[20px] border custom-border-radius bg-[var(--clr-accent)]">
+
+                    </div>
+                    <p>
+                        Logout
+                    </p>
+                </a>
+            </li>
+        </ul>
+
+    </aside>
+
+    <div id="main-content" class="grow-[9999] basis-[500px] bg-[var(--clr-body-bg)]">
+        <div id="topbar"
+             class="flex items-center sticky top-0 h-[80px] w-full p-6 gap-4 bg-[var(--clr-body-bg)] border-b border-solid border-[var(--clr-border)]">
+
+            <div id="topbar-wrapper"
+                 class="flex  items-center gap-8 py-4">
+
+                <button id="open-btn"
+                        class="burger-hover flex lg:hidden flex-col gap-2 p-[.125rem] cursor-pointer">
+                    <span class="w-[35px] h-[3px] bg-[var(--clr-text-light)] transition-all duration-200 ease-in-out"></span>
+                    <span class="w-[35px] h-[3px] bg-[var(--clr-text-light)]"></span>
+                    <span class="w-[35px] h-[3px] bg-[var(--clr-text-light)]"></span>
+                </button>
+
+                <div id="breadcrumbs">
+                    <h3 class="text-[var(--clr-accent)] uppercase tracking-tighter font-extrabold">
+                        {Breadcrumb}
+                    </h3>
                 </div>
 
             </div>
 
-                <textarea
-                        cols="60"
-                        id="check-text"
-                        class="bg-[#191718] text-[#F5F5F5] p-2 rounded-lg outline-none lg:text-2xl md:text-xl sm:text-lg text-base text-opacity-20"
-                >
-                    </textarea>
-
-                <textarea
-                        cols="60"
-                        id="text-input"
-                        class="bg-[#191718] text-[#F5F5F5] p-2 rounded-lg outline-none lg:text-2xl md:text-xl sm:text-lg text-base"
-                        name="text-input"
-                >
-                    </textarea>
+            <form action="" class="ml-auto">
+                <label for="search">
+                    <input type="text" id="search" placeholder="search here..."
+                           class="w-full outline-0 border-hidden border rounded-[50px] bg-[--clr-body-bg-hover] py-2 px-4 placeholder-[var(--clr-text-gray)]"
+                    >
+                </label>
+            </form>
 
         </div>
+
+        <div id="content"
+             class="p-6"
+        >
+
+            <!--                CONTENT HERE            -->
+
+            <h2>Heading</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at atque commodi culpa ea eaque
+                earum
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+            </p>
+            <h2>Heading</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at atque commodi culpa ea eaque
+                earum
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+            </p>
+            <h2>Heading</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at atque commodi culpa ea eaque
+                earum
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+            </p>
+            <h2>Heading</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at atque commodi culpa ea eaque
+                earum
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+                error, ex excepturi expedita facilis, fugiat incidunt molestias nemo perspiciatis quia rem saepe soluta?
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
 </body>
 </html>

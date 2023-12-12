@@ -1,21 +1,25 @@
-import './style.css'
-import axios from 'https://esm.sh/axios'
-
-const quotes =  await axios.get('https://api.quotable.io/quotes/random?minLength=300&maxLength=350');
-const checkText = document.querySelector('#check-text');
-const counter = document.querySelector('#counter');
 
 
-let count = 0;
+const backdrop = document.getElementById('backdrop');
+const aside = document.querySelector('aside');
 
-let characterCount = quotes.data[0].content.length;
+document.getElementById('open-btn').addEventListener('click', function() {
+    aside.classList.add('aside-visible');
+    backdrop.classList.remove('backdrop-invisible');
+    backdrop.classList.add('backdrop-visible');
+    document.body.classList.add('no-scroll');
+    console.log("toggle")
+});
 
-counter.innerText = count +"/"+ characterCount;
+document.getElementById('close-btn').addEventListener('click', function() {
+    aside.classList.remove('aside-visible');
+    backdrop.classList.remove('backdrop-visible');
+    document.body.classList.remove('no-scroll');
+    console.log("toggle")
+});
 
-checkText.setAttribute("data-placeholder",  quotes.data[0].content);
-checkText.setAttribute("placeholder",  quotes.data[0].content);
-
-// checkText.innerText = quotes.data[0].content;
-checkText.style.height = checkText.scrollHeight + "px";
-checkText.classList.add("text-opacity-10");
-
+backdrop.addEventListener('click', function () {
+    backdrop.classList.remove('backdrop-visible');
+    aside.classList.remove('aside-visible');
+    document.body.classList.remove('no-scroll');
+})
